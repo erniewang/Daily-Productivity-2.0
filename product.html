@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Productivity Tracker</title>
+    <style>
+        body {
+            background-image: url("air-sky-cloud-background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 2em;
+            padding: 6px;
+            background-color: #b8b8b8;
+            border-color: #838383;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 5px;
+            margin-bottom: 3px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .rectangle-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(4, 150px);
+            grid-gap: 10px;
+            justify-content: center;
+            align-content: center;
+            padding: 10px;
+            margin-top: 5px;
+            height: calc(100vh - 130px);
+        }
+
+
+        .rectangle {
+            background-color: #e0e0e0;
+            border: 1px solid #000;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            padding-top: 20px;
+            position: relative;
+            border: 2px solid rgb(117, 101, 101);
+        }
+
+        .rectangle textarea {
+            width: 187%;
+            height: 155%;
+            font-size: 10px;
+            overflow: auto;
+            resize: none;
+            background-color: #bab0b0;
+            padding-top: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            border-color: #a89d9d;
+        }
+
+        #rectangleNumber {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 97%;
+            height: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            background-color: rgb(198, 212, 212);
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .footer p {
+            font-size: 10px;
+        }
+
+
+        .black {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" style="border: 4px solid rgb(140, 130, 130);">Productivity Tracker</div>
+    <center>
+        <div class="buttons">
+            <button onclick="displayPopup()">Help</button>
+            <button class="btn" style="background-color: #a4a1a1; width: 140px;" onclick="changetime()">Set Wake Up
+                Time</button>
+            <button class="btn" style="background-color: #b5b5b5; width: 120px;"
+                onclick="reflectionInput()">Reflection</button>
+            <button class="btn" style="background-color: #8d8d8d; width: 120px;">Reset</button>
+            <button class="btn" style="background-color: #d3c3c3; width: 120px;">Save</button>
+        </div>
+    </center>
+    <script src="topButtons.js"></script>
+
+    <div id="impulseCatcherOverlay" style="display: none;">
+        <div id="impulseCatcherContent">
+            <div class="textarea-row">
+                <textarea style="width: calc(100% - 20px); height:30px; resize:none;"><button>Test</button></textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="rectangle-grid" id="alltimeboxes">
+        <div id="0" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">12
+                    am</button><button style="font-size: 8px;" onclick="split(this)">Split</button></span>
+            <textarea></textarea>
+        </div>
+        <div id="1" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">1
+                    am</button><button style="font-size: 8px;" onclick="split(this)">Split</button>
+            </span><textarea></textarea>
+
+        </div>
+        <div id="2" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">2
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="3" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">3
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="4" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">4
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="5" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">5
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="6" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">6
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="7" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">7
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="8" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">8
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="9" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">9
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="10" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">10
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="11" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">11
+                    am</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="12" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">12
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="13" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">1
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="14" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">2
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="15" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">3
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="16" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">4
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="17" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">5
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="18" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">6
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="19" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">7
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="20" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">8
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="21" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">9
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="22" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">10
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+
+        </div>
+        <div id="23" class="rectangle">
+            <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
+                    onmouseup="stopButtonChange(this)">11
+                    pm</button><button style="font-size: 8px;"
+                    onclick="split(this)">Split</button></span><textarea></textarea>
+        </div>
+        <script src="text.js"></script>
+        <script src="coloring.js"></script>
+        <!-- Add more rectangle divs with its sub-rectangles as per your need -->
+    </div>
+    <div class="footer" style="border: 4px solid rgb(58, 55, 55);">
+        <p>Made by KingErniethe1srt the epic flipper</p>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Link</a>
+    </div>
+</body>
+
+</html>
