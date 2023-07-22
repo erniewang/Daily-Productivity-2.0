@@ -103,13 +103,20 @@
     <div class="header" style="border: 4px solid rgb(140, 130, 130);">Productivity Tracker</div>
     <center>
         <div class="buttons">
-            <button onclick="displayPopup()">Help</button>
-            <button class="btn" style="background-color: #a4a1a1; width: 140px;" onclick="changetime()">Set Wake Up
+            <button id="helpButton" onclick="displayPopup()">Help</button>
+            <button id="setTimeButton" class="btn" style="background-color: #a4a1a1; width: 140px;"
+                onclick="changetime()">Set Wake Up
                 Time</button>
-            <button class="btn" style="background-color: #b5b5b5; width: 120px;"
+            <button id="writeReflectionButton" class="btn" style="background-color: #b5b5b5; width: 120px;"
                 onclick="reflectionInput()">Reflection</button>
-            <button class="btn" style="background-color: #8d8d8d; width: 120px;">Reset</button>
-            <button class="btn" style="background-color: #d3c3c3; width: 120px;">Save</button>
+            <button id="enterInpulseButton" class="btn"
+                style="background-color: #928787; font-size: 12px; width: 120px;" onclick="recordRandomShit()">Random
+                Thoughts</button>
+            <button id="resetButton" class="btn" style="background-color: #8d8d8d; font-size: 10px; width: 120px;"
+                onclick="resetAll()">Reset [spam-click]</button>
+            <button id="saveButton" class="btn" style="background-color: #d3c3c3; width: 120px;"
+                onclick="save()">Save</button>
+            <button id="uploadString()" onclick="uploadString()">Upload From Local</button>
         </div>
     </center>
     <script src="topButtons.js"></script>
@@ -129,12 +136,16 @@
                     onmouseup="stopButtonChange(this)">12
                     am</button><button style="font-size: 8px;" onclick="split(this)">Split</button></span>
             <textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
         </div>
         <div id="1" class="rectangle">
             <span id="rectangleNumber"><button style="font-size: 12px;" onmousedown="startColorChange(this)"
                     onmouseup="stopButtonChange(this)">1
                     am</button><button style="font-size: 8px;" onclick="split(this)">Split</button>
             </span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="2" class="rectangle">
@@ -142,6 +153,8 @@
                     onmouseup="stopButtonChange(this)">2
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="3" class="rectangle">
@@ -149,6 +162,8 @@
                     onmouseup="stopButtonChange(this)">3
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="4" class="rectangle">
@@ -156,6 +171,8 @@
                     onmouseup="stopButtonChange(this)">4
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="5" class="rectangle">
@@ -163,6 +180,8 @@
                     onmouseup="stopButtonChange(this)">5
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="6" class="rectangle">
@@ -170,6 +189,8 @@
                     onmouseup="stopButtonChange(this)">6
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="7" class="rectangle">
@@ -177,6 +198,8 @@
                     onmouseup="stopButtonChange(this)">7
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="8" class="rectangle">
@@ -184,6 +207,8 @@
                     onmouseup="stopButtonChange(this)">8
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="9" class="rectangle">
@@ -191,6 +216,8 @@
                     onmouseup="stopButtonChange(this)">9
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="10" class="rectangle">
@@ -198,6 +225,8 @@
                     onmouseup="stopButtonChange(this)">10
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="11" class="rectangle">
@@ -205,6 +234,8 @@
                     onmouseup="stopButtonChange(this)">11
                     am</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="12" class="rectangle">
@@ -212,6 +243,8 @@
                     onmouseup="stopButtonChange(this)">12
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="13" class="rectangle">
@@ -219,6 +252,8 @@
                     onmouseup="stopButtonChange(this)">1
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="14" class="rectangle">
@@ -226,6 +261,8 @@
                     onmouseup="stopButtonChange(this)">2
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="15" class="rectangle">
@@ -233,6 +270,8 @@
                     onmouseup="stopButtonChange(this)">3
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="16" class="rectangle">
@@ -240,6 +279,8 @@
                     onmouseup="stopButtonChange(this)">4
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="17" class="rectangle">
@@ -247,6 +288,8 @@
                     onmouseup="stopButtonChange(this)">5
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="18" class="rectangle">
@@ -254,6 +297,8 @@
                     onmouseup="stopButtonChange(this)">6
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="19" class="rectangle">
@@ -261,6 +306,8 @@
                     onmouseup="stopButtonChange(this)">7
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="20" class="rectangle">
@@ -268,6 +315,8 @@
                     onmouseup="stopButtonChange(this)">8
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="21" class="rectangle">
@@ -275,6 +324,8 @@
                     onmouseup="stopButtonChange(this)">9
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="22" class="rectangle">
@@ -282,6 +333,8 @@
                     onmouseup="stopButtonChange(this)">10
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
 
         </div>
         <div id="23" class="rectangle">
@@ -289,9 +342,12 @@
                     onmouseup="stopButtonChange(this)">11
                     pm</button><button style="font-size: 8px;"
                     onclick="split(this)">Split</button></span><textarea></textarea>
+            <p id="colorScore" style="display: none;"></p>
+            <p id="colorScore2" style="display: none;"></p>
         </div>
         <script src="text.js"></script>
         <script src="coloring.js"></script>
+        <script src="data.js"></script>
         <!-- Add more rectangle divs with its sub-rectangles as per your need -->
     </div>
     <div class="footer" style="border: 4px solid rgb(58, 55, 55);">

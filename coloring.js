@@ -18,13 +18,17 @@ function interpolateColor(n, N_min, N_max) {
 //changing the colors action
 function changeSingleSquare(button) {
     var parent = button.parentNode.parentNode;
+    let scoreForClass = parent.querySelector('#colorScore');
+    let scoreForClass2 = parent.querySelector('#colorScore2');
     var textes = parent.querySelectorAll('textarea');
     let realColorValue = variableRateIncrease(textColorValue);
     if (button.textContent.includes("30")) {
         textes[1].style.backgroundColor = interpolateColor(textColorValue, 0, 100);
+        scoreForClass2.textContent = textColorValue;
     }
     else {
         textes[0].style.backgroundColor = interpolateColor(textColorValue, 0, 100);
+        scoreForClass.textContent = textColorValue;
     }
 }
 
@@ -59,10 +63,11 @@ function stopButtonChange(button) {
     clearInterval(intervalId);
 }
 
-let textColorValue = 0;
+var textColorValue = 0;
 let final_limiter = 0;
 let buffer = 0;
 let reset = -10;
+var textareaScore = 0;
 
 function performAction(button) {
     textColorValue = textColorValue + 2;
@@ -80,6 +85,7 @@ function performAction(button) {
         textColorValue = 100;
         buffer++;
     }
+    textareaScore = textColorValue;
     changeSingleSquare(button);
 }
 
